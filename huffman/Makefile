@@ -1,5 +1,5 @@
 all: huffman.c huffman.h util.h
-	cc -o huff huffman.c
+	cc -o ../bin/huff huffman.c
 
 test:
-	./huff input_text.txt
+	../bin/huff input_text.txt

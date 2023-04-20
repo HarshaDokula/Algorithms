@@ -15,6 +15,6 @@ typedef struct node{
 }Node;
 
 
-Node *huffmanTree(Node **nodes,size_t low_bound, size_t up_bound);
-void encode(Node *root, Node **nodes, char *message, char *code);
+Node *huffmanTree(Node **nodes, size_t up_bound);
+void encode(Node *root, Node **nodes, char message, char *code,char encs[charcount][32]);
 void decode(Node * root, Node **nodes,char *code, char *decoded_msg,int code_len);
