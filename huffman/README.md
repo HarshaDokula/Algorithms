@@ -75,3 +75,12 @@ h.;';q1
 3. snprintf -> https://www.ibm.com/docs/en/i/7.3?topic=functions-snprintf-print-formatted-data-buffer
 4. fwrite -> https://www.ibm.com/docs/en/i/7.2?topic=functions-fwrite-write-items
 5. for iteger to binary conversion -> https://stackoverflow.com/questions/5488377/converting-an-integer-to-binary-in-c
+
+
+## Things to improve.
+
+* The decompressed message length is taken for the encoded message, make the decompressed message length variable.
+* the decoding of the message is done using huffman tree, do it using variable length substrings and hash map table for character encoding to decode back to original message.
+* there are character array to store message or the encoded message [in the tansient stages], change them to write directly to files.
+
+

@@ -1,7 +1,8 @@
 # Algorithms
 collection of algorithms
 
-## TODO:
-* count the charaters in the input file.
-* encode the given text.
-* decode the given text.
+
+**Algorithm -- FOLDERNAME**
+ 
+1. huffman coding using arrays. -- huffman
+2. Max Heap usign arrays. -- max_heap
