@@ -1,50 +1,56 @@
-}}}}}}qVSW66GWMaF7%mugMy04
-MA0DY*UhYZ0z0XX!G4TY
-QOX*RZbbhXegz9CPB0u0
-8&tTE$h3T6+M=kqej!EO
-=6Hdeca$RMBOaOZ0k1mw
-nsS922OOrXOeJ*=4Q=Hp
-o6mfr%vOVw&CGwh4sKvw
-gJDak9xz38+X*Pt7gM1z
-aD+nQBfD40BgZWDgAFnT
-WxRD#=Ca1Og35W&kN8aY
-bwBPg96DR8vpuC7OHfC0
-vW=fDZXmz+b!5aQud7kM
-Um53Q*YNGUK+a$AVDmE+
-Ks3t!FTfEwhs$j@q3SxX
-B2w8Ar4RD7Z4pA*7C&qv
-gvV44cHSBP&uaAQ0@Fxk
-wH%twR}G683gU!OTmevMW
-zM&WM=pm8crGNJsSf*VE
-Cb@yatXHD@q8aRH8!7#s
-XP#a87*yBFB%&mHG8V!X
-tZ#6N8MfvUSHS8!sv9jT
-pj7Me5@Qj45Y2XsM%h3S
-Y*gZt%O+6H2w4PokuHKF
-TqyttNNS2ekcjRN7$AZ$
-ZSDuy10DtHk146z&M1*9
-K7PUC%*JmX#tANusFnn6
-CDnoB!k8YjK@5TvFVmw%
-VEzN0Hy@JatW2Y#VDrAZ
-6sXjFfrcKNBJCg8S=@Zr
-jgnxnQpZjYf0x9+UPJH=
-o5M*95ts$*wq7YKux0+g
-+*fA2fkhSAo+jyFoQPV2
-cvOm@we}sxR$1mXmXJZH@
-oJmPNCU+f@k7J=nkoq*H}
-7y=zHP&uy1j=s6zDtkN&
-mGw31!3392vdpj7$ZWZG
-w$GmfZE@jsMhMHEtve3U
-SvSth2J7$bHdN%#m*mWh
-=c8Q5aQdOcj=wT!dbnGz
-DtkJ%A$hP3y0+wuq*xKk
-ZSh8Mp$wvqzV$bqJJHk$
-6!mFRM3QX#$cfENu1=M3
-DXN0XVS#vVm+N#T2ukNX
-DeEbE6J62y*9Tsv&0fUM
-YXgCjvoSWewYXMFo@t%1
-3Nq0KeEDvMOyZRsWDags
-2VoVH+2j7ewR3M2BKpEM
-#8MUa83ur9d+k3BBn8OB
-sJbPQ@UnUKEn08rndho2
-QskU2Q1x*ScMh1Nveud#
+This week, you will learn about Huffman trees, and then implement them in a C program. The first 30 minutes or so of Lecture on Tuesday 4/11 will discuss the concepts and algorithms for Huffman trees. Please pay close attention and make sure you understand everything before you dive into the implementation!&nbsp;&nbsp;
+
+The wikipedia page on Huffman coding is a good source of information, if necessary. But it also contains much more information than you need for this assignment. Everything you need to know to implement the assignment will be covered in class on Tuesday 4/11 -- use the wikipedia page only if something is unclear. But you should also feel free to ask questions and come to office hours for further help.
+https://en.wikipedia.org/wiki/Huffman_coding
+
+The remainder of the time on Tuesday 4/11 will be spent beginning your implementation, which you will then be able to work on Thursday in class. The assignment is due next Monday (4/17) at 11:59pm.
+
+A Small Shift in our Approach
+
+Prior assignments have given you the structure of a program, and interfaces to fill in with implementations; you have worked individually on these assignments. Effective software development in the real world requires (a) working with others, (b) design, not just implementation, (c) learning some things on your own (after being pointed in the right direction), and (d) debugging. Over the last four weeks of the semester, we will work toward building these skills, along with your C programming skills.
+
+Logistics
+
+You will work in pairs for this assignment. You may pick your partner if you like. If not, we will assign a partner for you at the beginning of class on Tuesday 4/11.
+
+Huffman coding involves assigning a bit sequence to each character that needs to be encoded. Frequently occurring characters get shorter bit sequences, infrequent characters get longer sequences. This strategy minimizes the total number of bits needed to encode messages.
+
+Details will be provided in class.
+
+Character Counting
+
+The first small program that you will write should take as input a text file, and produce as output a table of character counts. This table should be stored in an array of 256 unsigned ints, each of which is initialized to 0 and incremented each time a corresponding character is read from the file. This character count table should be printed to standard output, and also stored in a fixed size character buffer. just to make sure that the values make sense. The C functions that will come in handy include fopen(), fgetc(), fclose(), and memcpy(). Find or create a small text file and confirm that your program correctly counts that file's characters, can write them into a fixed size character buffer, read them back out of that buffer, and prints the counts to standard output.
+
+Huffman Tree
+
+Next, implement the Huffman coding strategy described in class. Unlike standard BST trees that dynamically allocate tree nodes and connect them with pointers, your tree must store nodes in an array. Pointers should be replaced by array indices. How big must the array be? What information should each node (array entry) store? Use a C struct, and create an array of records for the Huffman tree nodes.
+
+Encoding Table
+
+From the Huffman tree, you can get the bit encodings of all the characters. You may assume that no encoding requires more than 32 bits, and so the bit encodings of each character can be stored within integers. Determining and storing the bit encodings from the Huffman tree is therefore a matter of creating a 256 entry array of integers, by inspecting and using the tree.
+
+Encoding a Message
+
+The encoding table can then be used to encode a message. Each time a character appears in the input message, the bit pattern is determined, and those bits are used for the character, instead of the character itself. As a first step toward correct Huffman encoding, you should place all 32 bits into the output message buffer. This, of course, would result in the message being 4X larger than the original message! But it will help confirm correct generation of your table.
+
+Decoding a Message
+
+To decode a message, the bit sequence is read from the message and used to look up the character in the Huffman tree. Once only the variable number bits are placed in the message (i.e. the correct way of encoding the characters), them message is read a bit at a time, and the characters are deterimined one at a time.
+
+Correctness
+
+Ultimately, your program can determine its correctness by ensuring that a message that is encoded and then decoded, matches the original message. The number of bits used for the encoding should also be deterministic. We will cross-check submissions... all correct submissions should have the same number of bits when used on the same input files.
+
+You will demo your code to Jigeesha during the week of April 16th. Scheduling a time efficiently (as soon as she asks), through whatever mechanism she uses, and showing up on time and ready to demo your code will be worth 10% of your grade. Both you and your partner should be able to explain and answer questions about all aspects of your code.
+
+Rules
+
+You may work with your partner of course, but nobody else other than Jigeesha and me, in or out of the class may help you with this assignment. You may not use any other Huffman tree code that you find, and you may not use ChatGBT or any other generative AI tool. You may consult information online about small aspects of the assignment (for example encoding bits that are not byte aligned, into a character buffer). If you use code that you find (a small handful of lines at most) for these small things, you must site it and provide a link, within a README file in the directory that you submit to Brightspace.
+
+We will run your submissions through MOSS, which is a pairwise similarity checker. Submissions that match too closely, or that match implementations that you may find online, will not receive credit, and academic honesty consequences will result (Category 1 for the first offense, Category 2 for subsequent offenses). If you have any question about appropriate collaboration, please ask!&nbsp;
+
+My purpose in spelling out explicit rules is to maximize your learning from this assignment and the final four weeks of the class!
+
+ksjdfkldjsfs
+dfdsfdsfd
+

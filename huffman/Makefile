@@ -3,3 +3,6 @@ all: huffman.c huffman.h util.h
 
 test:
 	../bin/huff input_text.txt
+
+large:
+	../bin/huff input_large.txt
